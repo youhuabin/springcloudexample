@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: zull-gateway
+server:
+  port: 5555
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#使用url方式映射路由
+#zuul:
+#  routes:
+#    user-defined-zuul-a:
+#      path: /zuul-api-a/**
+#      url: http://localhost:9090
+#    user-defined-zuul-b:
+#      path: /zuul-api-b/**
+#      url: http://localhost:9091
+
+#使用服务id方式进行路由
+zuul:
+  routes:
+    user-defined-zuul-a:
+      path: /zuul-api-provider/**
+      serviceId: eureka-provider
