@@ -1,6 +1,8 @@
 spring:
   application:
     name: eureka-rest-consumer
+  zipkin:
+    base-url: http://192.168.14.112:9411
 
 server:
   port: 8081
